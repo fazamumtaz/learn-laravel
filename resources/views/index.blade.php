@@ -1,19 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.main')
 
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Document</title>
-</head>
-
-<body>
-   <div class="container">
-      <p>
-         <a href=""></a>
-      </p>
-   </div>
-</body>
-
-</html>
+@section('container')
+   <h1>Halaman {{ $pageTitle }}</h1>
+@endsection 
