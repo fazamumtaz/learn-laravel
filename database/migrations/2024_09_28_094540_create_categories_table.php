@@ -11,26 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('blogTitle');
+            $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->foreignId('category_id');
-            $table->text('author');
-            $table->text('content');
-            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }
-
-
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('categories');
     }
 };
