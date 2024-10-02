@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('blogTitle');
             $table->string('slug')->unique();
             $table->foreignId('category_id');
-            $table->text('author');
+            $table->foreignId('user_id');
+            // $table->text('author');
             $table->text('content');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
