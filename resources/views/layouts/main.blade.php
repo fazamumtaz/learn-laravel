@@ -11,7 +11,6 @@
    <title>Learn Laravel | {{ $pageTitle }}</title>
 </head>
 
-<body>
 
    @include('partials.navbar')
 

@@ -3,9 +3,9 @@
 
 @section('container')
    <h1 class="mb-5">{{ $title }}</h1>
-   @foreach ($categories as $category)
+   @foreach ($content as $cont)
    <ul>
-      <li><h2><a href="/categories/{{ $category->slug }}">{{ $category->name }}</a></h2></li>
+      <li><h2><a href="/categories/{{ $cont->slug }}">{{ $cont->name }}</a></h2></li>
    </ul>
    @endforeach
 @endsection
