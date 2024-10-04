@@ -31,22 +31,24 @@ Route::get('categories/{category:slug}', function (Category $category) {
     return view('category', [
         'pageTitle' => "Post by Category",
         'title' => $category->name,
-        'posts' => $category->posts,
+        'posts' => $category->posts->load('category', 'user'),
         'name' => $category->name
     ]);
 });
-Route::get('authors', function () {
-    return view('categories', [
-        'pageTitle' => 'Authors',
-        'content' => User::all(),
-        'title' => 'The Authors'
-    ]);
-});
+
+//  -- UNUSE --
+// Route::get('authors', function () {
+//     return view('categories', [
+//         'pageTitle' => 'Authors',
+//         'content' => User::all(),
+//         'title' => 'The Authors'
+//     ]);
+// });
 
 Route::get('authors/{author:id}', function (User $author) {
     return view('posts', [
         'pageTitle' => "$author->name's posts",
         'title' => "Posts by $author->name",
-        'posts' => $author->posts
+        'posts' => $author->posts->load(['category', 'user']),
     ]);
 });
