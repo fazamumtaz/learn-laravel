@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(5)->create();
+        User::factory(5)->create();
         Post::factory(10)->create();
 
         // \App\Models\User::factory()->create([
@@ -40,15 +40,15 @@ class DatabaseSeeder extends Seeder
         //     'password' => bcrypt('234')
         // ]);
 
-        // Category::create([
-        //     'name' => 'Productivity',
-        //     'slug' => 'productivity'
-        // ]);
+        Category::create([
+            'name' => 'Productivity',
+            'slug' => 'productivity'
+        ]);
 
-        // Category::create([
-        //     'name' => 'Programming',
-        //     'slug' => 'programming'
-        // ]);
+        Category::create([
+            'name' => 'Programming',
+            'slug' => 'programming'
+        ]);
 
         // Post::create([
         //     'blogTitle' => 'Dart: Multiplatform Programming Language',
