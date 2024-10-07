@@ -11,7 +11,7 @@ class Post extends Model
 
     // protected $fillable = ['blogTitle', 'author', 'content'];
     protected $guarded = ['id'];
-    protected $with = ['user', 'category'];
+    protected $with = ['author', 'category'];
 
     public function scopeFilter($query, array $filters)
     {
@@ -47,10 +47,10 @@ class Post extends Model
             });
         });
 
-        $query->when($filters['user'] ?? false, function ($query, $user) {
-            // Apply the user filter
-            return $query->whereHas('category', function ($query) use ($user) {
-                $query->where('id', $user);
+        $query->when($filters['author'] ?? false, function ($query, $author) {
+            // Apply the author filter
+            return $query->whereHas('author', function ($query) use ($author) {
+                $query->where('username', $author);
             });
         });
     }
@@ -59,8 +59,8 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function user()
+    public function author()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

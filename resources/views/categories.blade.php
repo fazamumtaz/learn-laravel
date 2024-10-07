@@ -12,7 +12,7 @@
       <div class="row">
          @foreach ($content as $cont)
             <div class="col-md-4">
-               <a href="/categories/{{ $cont->name }}" class="text-decoration-none">
+               <a href="/posts?category={{ $cont->name }}" class="text-decoration-none">
                   <div class="card text-bg-dark">
                      <div class="position-relative">
                         <img

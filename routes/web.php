@@ -31,7 +31,7 @@ Route::get('categories/{category:slug}', function (Category $category) {
     return view('posts', [
         'pageTitle' => "Post by Category",
         'title' => $category->name,
-        'posts' => $category->posts->load('category', 'user'),
+        'posts' => $category->posts->load('category', 'author'),
         'name' => $category->name
     ]);
 });
@@ -45,10 +45,10 @@ Route::get('categories/{category:slug}', function (Category $category) {
 //     ]);
 // });
 
-Route::get('authors/{author:id}', function (User $author) {
+Route::get('authors/{author:username}', function (User $author) {
     return view('posts', [
         'pageTitle' => "$author->name's posts",
         'title' => "Posts by $author->name",
-        'posts' => $author->posts->load(['category', 'user']),
+        'posts' => $author->posts->load(['category', 'author']),
     ]);
 });

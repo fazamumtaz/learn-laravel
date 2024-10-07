@@ -7,9 +7,14 @@
    <div class="row justify-content-center">
       <div class="col-md-6">
          <form action="/posts">
+            {{-- Menahan URL dari pencarian sebelumnya --}}
             @if (request('category'))
                <input type="hidden" name="category" value="{{ request('category') }}">
             @endif
+            @if (request('author'))
+               <input type="hidden" name="author" value="{{ request('author') }}">
+            @endif
+            {{-- end --}}
             <div class="input-group mb-3">
                <input type="text" class="form-control" placeholder="Search.." name="search"
                   value="{{ request('search') }}">
@@ -27,7 +32,7 @@
                   class="text-decoration-none text-dark">{{ $posts[0]->blogTitle }}</a></h3>
             <small class="text-body-secondary">
                <p class="card-text">{{ $posts[0]->created_at->diffForHumans() }} by <a
-                     href="/authors/{{ $posts[0]->user->id }}" class="text-decoration-none">{{ $posts[0]->user->name }}
+                     href="/posts?author={{ $posts[0]->author->username }}" class="text-decoration-none">{{ $posts[0]->author->name }}
                   </a>
                   in <a href="/posts?category={{ $posts[0]->category->slug }}">{{ $posts[0]->category->name }}</a>
                <p class="card-text"><a href="/post/{{ $posts[0]->slug }}" class="btn btn-danger">Read more</a></p>
@@ -46,7 +51,7 @@
                            class="badge text-bg-primary mb-3 text-decoration-none p-2 ">{{ $post->category->name }}</a>
                         <h5 class="card-title mb-2">{{ $post->blogTitle }}</h5>
                         <small class=" d-block card-subtitle mb-2 text-body-secondary mb-4">By: <a
-                              href="/authors/{{ $post->user->id }}" class="text-decoration-none">{{ $post->user->name }}
+                              href="/posts?author={{ $post->author->username }}" class="text-decoration-none">{{ $post->author->name }}
                            </a>{{ $post->created_at->diffForHumans() }}</small>
                         <a href="/post/{{ $post->slug }}" class="btn btn-danger">Read more</a>
                      </div>
