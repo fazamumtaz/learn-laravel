@@ -6,7 +6,7 @@
          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
          <ul class="navbar-nav">
             <li class="nav-item">
                <a class="nav-link {{ ($pageTitle == "Home") ? "active" : "" }}" aria-current="page" href="/">Home</a>
@@ -17,6 +17,14 @@
             <li class="nav-item">
                <a class="nav-link {{ ($pageTitle == "Post") ? "active" : "" }}" href="/posts">Post</a>
             </li>
+         </ul>
+         <ul class="navbar-nav">
+            <li class="nav-item">
+               <a href="/login" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+            </li>
+            {{-- <li class="nav-item">
+               <a href="/signup" class="nav-link">Sign Up</a>
+            </li> --}}
          </ul>
       </div>
    </div>
