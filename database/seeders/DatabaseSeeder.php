@@ -17,17 +17,17 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         //Factory
-        // User::factory(5)->create();
-        Post::factory(8)->create();
+        // User::factory(3)->create();
+        Post::factory(12)->create();
 
-        //Manual
-        // Category::create([
-        //     'name' => 'Productivity',
-        //     'slug' => 'productivity'
-        // ]);
-        // Category::create([
-        //     'name' => 'Programming',
-        //     'slug' => 'programming'
-        // ]);
+        // Manual
+        Category::create([
+            'name' => 'Productivity',
+            'slug' => 'productivity'
+        ]);
+        Category::create([
+            'name' => 'Programming',
+            'slug' => 'programming'
+        ]);
     }
 }

@@ -25,6 +25,14 @@
                   My Posts
                </a>
             </li>
+            <li class="nav-item">
+               <a class="{{ Request::is('dashboard/posts') ? 'active' : '' }} text-dark nav-link d-flex align-items-center gap-2" href="/dashboard/posts/create">
+                  <svg class="bi">
+                     <use xlink:href="#plus-circle" />
+                  </svg>
+                  New Post
+               </a>
+            </li>
          </ul>
 
          <hr class="my-3">

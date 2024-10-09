@@ -24,7 +24,7 @@ class PostFactory extends Factory
                     return "<p>$p</p>";
                 })
                 ->implode(''),
-            'user_id' => 11,
+            'user_id' => 4,
             'category_id' => mt_rand(1, 2)
         ];
     }

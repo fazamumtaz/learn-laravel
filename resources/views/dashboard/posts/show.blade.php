@@ -10,7 +10,8 @@
             {!! $post->content !!}
 
             <div class="show-action my-3">
-               <a href="/dashboard/posts/" class="btn bg-success text-light"><i class="bi bi-arrow-bar-left"></i> Back to all my posts</a>
+               <a href="/dashboard/posts/" class="btn bg-success text-light"><i class="bi bi-arrow-bar-left"></i> Back to all
+                  my posts</a>
                <a href="" class="btn bg-warning text-light"><i class="bi bi-pen"></i> Edit</a>
                <a href="" class="btn bg-danger text-light"><i class="bi bi-trash"></i> Delete</a>
             </div>

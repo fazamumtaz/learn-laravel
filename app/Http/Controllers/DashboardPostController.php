@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class DashboardPostController extends Controller
 {
@@ -12,10 +15,14 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
+        // $category = Category::all();
         // return Post::where('user_id', auth()->user()->id)->get();
         return view('dashboard.posts.index', [
-            'posts' => Post::where('user_id', auth()->user()->id)->get()
+            'posts' => Post::where('user_id', auth()->user()->id)->get(),
+            'category' => Category::all()
         ]);
+
+        // dd(Post::where('user_id', auth()->user()->id));
     }
 
     /**
@@ -23,7 +30,10 @@ class DashboardPostController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.posts.create', [
+            'pageTitle' => "Create Post",
+            'category' => Category::all()
+        ]);
     }
 
     /**
@@ -31,7 +41,23 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $slug = Str::slug($request->blogTitle);
+        // Validasi inputan user
+        $validatedData = $request->validate([
+            'blogTitle' => "required",
+            'content' => "required",
+            'category_id' => "required"
+        ]);
+
+        // Add the slug to validated data
+        $validatedData['slug'] = $slug;
+        $validatedData['user_id'] = auth()->user()->id;
+
+        // Membuat post baru
+        Post::create($validatedData);
+
+        // Mengarahkan user kembali ke dashboard/
+        return redirect('/dashboard/posts')->with('success', 'Post berhasil ditambahkan');
     }
 
     /**
@@ -65,6 +91,9 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        // Post::destroy($post->slug);
+        $post->delete();
+
+        return redirect('/dashboard/posts')->with('success', 'Postingan berhasil dihapus');
     }
 }

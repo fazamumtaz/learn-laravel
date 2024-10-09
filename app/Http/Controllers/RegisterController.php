@@ -24,6 +24,7 @@ class RegisterController extends Controller
             'password' => 'required|min:8|max:255'
         ]);
 
+
         $validatedData['password'] = Hash::make($validatedData['password']);
 
         User::create($validatedData);
