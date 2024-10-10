@@ -17,6 +17,15 @@
    <!-- Custom styles for this template -->
    <link href="/css/dashboard.css" rel="stylesheet">
    <title>Pay Blog | Dashboard</title>
+
+   {{-- Trix --}}
+   <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+<style>
+   trix-toolbar [data-trix-button-group="file-tools"] {
+      display: none;
+   }
+</style>
+   <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
 </head>
 
 <body>
